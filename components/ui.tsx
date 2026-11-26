@@ -6,7 +6,7 @@ export function fmtINR(n: number | null | undefined, compact = true): string {
   const v = Number(n);
   if (compact) {
     if (Math.abs(v) >= 1e7) return `₹${(v / 1e7).toFixed(2)} Cr`;
-    if (Math.abs(v) >= 1e5) return `₹${(v / 1e5).toFixed(v % 1e5 === 0 ? 0 : 2).replace(/\.?0+$/, "")}L`;
+    if (Math.abs(v) >= 1e5) { const t = (v / 1e5).toFixed(2); return `₹${t.includes(".") ? t.replace(/0+$/, "").replace(/\.$/, "") : t}L`; }
     if (Math.abs(v) >= 1e3) return `₹${(v / 1e3).toFixed(0)}K`;
   }
   return "₹" + v.toLocaleString("en-IN");

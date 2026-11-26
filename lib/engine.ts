@@ -108,6 +108,7 @@ export interface OppView {
 
 export function snapshot(ds: Dataset, asOfDate?: string) {
   const asOfStr = asOfDate || ds.settings.campaign_date;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(asOfStr) || isNaN(Date.parse(asOfStr))) throw new Error(`Invalid date "${asOfStr}": use YYYY-MM-DD`);
   const asOf = dateTs(asOfStr);
   const c = clean(ds);
   const A = ds.settings.assumptions;

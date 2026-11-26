@@ -65,7 +65,7 @@ initiatives = [
    "Scale at >=40%; 15-40% change the intro source; below 15% close the stalled deals.", "2025-03-17", "2025-04-03"),
   (4, "Proof-based packages using attendee data",
    "Tiered packages priced on verified outcomes (sampling to verified attendees, leads captured), using the sponsor-to-attendee campaign links.",
-   "planned", "Nisha Rao", 25000, 350000, "Average proposal value vs Rs 93K baseline", "INR", "higher_is_better", 110000, 85000,
+   "planned", "Nisha Rao", 25000, 320000, "Average proposal value vs Rs 93K baseline", "INR", "higher_is_better", 110000, 85000,
    "Scale if average proposal >= Rs 1.1L with no drop in acceptance; stop if below Rs 85K.", "2025-03-24", "2025-04-10"),
   (5, "Category-exclusive anchor tender",
    "One structured competitive pitch for title or category exclusivity among the categories that convert best (food and beverage, mobility).",
@@ -107,8 +107,10 @@ for t in tasks:
 oh = x["Opportunity history"].drop_duplicates("history_id").sort_values("effective_at")
 op = x["Partner opportunities"].set_index("opportunity_id")
 conf = oh[oh.stage == "partner_confirmed"].groupby("opportunity_id").first()
+final_stage = oh.groupby("opportunity_id").stage.last()
 for oid, r in conf.iterrows():
     if op.loc[oid, "support_type"] != "cash": continue
+    if final_stage[oid] != "partner_confirmed": continue  # e.g. Cobalt Learning withdrew: no invoice, no receipt
     v = int(r.confirmed_value_inr); d0 = r.effective_at.date()
     h = int(hashlib.md5(oid.encode()).hexdigest(), 16) % 10
     inv = d0 + dt.timedelta(days=1)

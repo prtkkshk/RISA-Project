@@ -1,5 +1,7 @@
 # Sponsor Growth Center
 
+**Live app:** https://risa-project-seven.vercel.app/
+
 **Challenge B: Sponsorship growth.** A command center for collecting the most sponsorship cash before a Bengaluru college festival, with an embedded AI Growth Analyst that works on the app's live data.
 
 > **Thesis.** Sponsorship runs on trust, and a promise is not cash. In the source data, warm channels (creator referrals, the inbound form, warm introductions) produced **24 of 24 lasting confirmed partnerships**. Cold email, LinkedIn and revival produced **0 from 33 opportunities**. **₹2.4L of the ₹22.4L "confirmed" value is in-kind**, and **no bank receipts exist**. So the strategy is to build a warm-introduction engine and sign deals on cash-first terms. The product therefore tracks **cash collected**, not promises.
@@ -77,10 +79,10 @@ The framework is **expected cash per team-hour × confidence**. The binding cons
 
 | Rank | Bet | Evidence | Expected collected cash | Budget | KPI and thresholds |
 |---|---|---|---|---|---|
-| 1 | Sponsor-gets-sponsor referral engine | Warm won 24 of 25 | ₹7.2L (base) | ₹40K | Intro-to-meeting within 7 days: scale ≥50%, stop <25% |
+| 1 | Sponsor-gets-sponsor referral engine | Warm won 24 of 25 | ₹7.2L base, ₹16L stretch | ₹40K | Intro-to-meeting within 7 days: scale ≥50%, stop <25% |
 | 2 | Cash-first deal terms (50% advance, invoice at signing, T-21 checkpoint) | 1 of 25 confirmations reneged; confirmed ≠ cash | ₹3.1L (collection 80→90%) | ₹30K | % of confirmed value with an advance: scale ≥60%, stop <30% |
 | 3 | Rescue leaked and stalled demand | 18 qualified with no deal; ₹14.4L stale | ₹3.0L | ₹10K | % rescued with a meeting in 10 days: scale ≥40%, stop <15% |
-| 4 | Proof-based packages using attendee outcomes | Average deal ₹93K; 3 activations link to attendee campaigns | ₹3.5L (average deal +13%) | ₹25K | Average proposal value: scale ≥₹1.1L, stop <₹85K |
+| 4 | Proof-based packages using attendee outcomes | Average deal ₹93K; 3 activations link to attendee campaigns | ₹3.2L (average deal +13%) | ₹25K | Average proposal value: scale ≥₹1.1L, stop <₹85K |
 | 5 | Category-exclusive anchor tender | Food and beverage, and mobility, win most | ₹7.2L (stretch only, high variance) | ₹20K | Bids by deadline: scale ≥3, stop <2 |
 | ✕ | Scale cold email | 507 touches, 91 brands, 0 wins | – | – | Rejected |
 | ✕ | Cold LinkedIn | 12 opportunities, 0 lasting wins | – | – | Rejected |
@@ -100,7 +102,8 @@ The framework is **expected cash per team-hour × confidence**. The binding cons
 |---|---|---|
 | Engine (11 tests) | Every headline number above, deduplication, the target version in force, time travel without leakage, the Cobalt withdrawal | `npm test` |
 | Copilot tools (18 tests) | Every read tool returns correct numbers from the live DB; the calculator rejects code | `npm test` |
-| Copilot eval (11 cases) | Grounded KPIs, cash honesty, a follow-up, owner fairness, 3 can't-answer questions (loss reason, cost, causal), time travel, a calculation, a recommendation, propose → confirm → persisted task, and a **changed-data** check (confirms a deal, then expects the new numbers). The suite resets the database afterwards | `npm run eval` (needs the app running and an OpenAI key). It writes `eval-report.md` |
+| Formatting (1 test) | Indian-currency formatting (₹20L, ₹14.4L, ₹2.85L, ₹93K) | `npm test` |
+| Copilot eval (13 checks) | Grounded KPIs, cash honesty, a follow-up, owner fairness, 3 can't-answer questions (loss reason, cost, causal), time travel, a calculation, a recommendation, propose → confirm → persisted task, and a **changed-data** check (confirms a deal, then expects the new numbers). The suite resets the database afterwards | `npm run eval` (needs the app running and an OpenAI key). It writes `eval-report.md` |
 
 ## 8. Setup
 
