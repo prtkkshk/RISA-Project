@@ -1,0 +1,35 @@
+{
+  "name": "risa-sponsor-growth-center",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "db:seed": "node scripts/db-setup.mjs",
+    "eval": "node scripts/eval.mjs"
+  },
+  "dependencies": {
+    "next": "^16.4.6",
+    "openai": "^7.65.0",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.11.1",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.11",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.2"
+  }
+}
